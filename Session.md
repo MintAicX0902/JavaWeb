@@ -462,6 +462,8 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper
 
 ## 3. XSS过滤处理
 
+```java
+
 /**
  * XSS过滤处理
  * 
@@ -560,13 +562,16 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper
         return StringUtils.startsWithIgnoreCase(header, MediaType.APPLICATION_JSON_VALUE);
     }
 }
+```
 
 ## 4. 转义html字符 - clean方法
 
+```java
 public static String clean(String content)
     {
         return new HTMLFilter().filter(content);
     }
+```
 
 ## 5. 转义html字符 - html过滤器
 ```java
