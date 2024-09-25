@@ -60,7 +60,59 @@
 ### 1.2 跨站脚本攻击(XSS)和防御
 
 **原理:** XSS攻击是指攻击者在网页中注入恶意脚本，当其他用户访问时，恶意脚本被执行，从而窃取用户信息或篡改页面内容。
-  
+
+**实例:** 
+
+```html
+<html>
+<head>
+<meta charset="utf-8">
+<meta lang="zh">
+    <style>
+        .txrow {
+            flex-direction: row;
+            width:50%;
+        }
+        #cmtInput {
+            width:100%;
+            height:100px;
+        }
+    </style>
+    <script>
+        function comment() {
+            let input = document.getElementById("cmtInput")
+            let c = document.getElementById("cmtContent")
+
+            let newDiv = document.createElement("div")
+            newDiv.innerHTML = input.value
+            c.appendChild(newDiv)
+        }
+    </script>
+</head>
+<body>
+    <div style="display:flex;">
+        <div class="txrow">
+            <textarea id="cmtInput"></textarea><button onclick="comment();">评论</button>
+        </div>
+        <div style="width:10px;"></div>
+        <div class="txrow" id="cmtContent"></div>
+    </div>
+</body>
+</html>
+```
+
+若未进行转义，用户输入语句如下：
+
+```html
+<a href="javascript:alert('你被攻击了！');">9999现金点击就送</a>
+
+<img onerror="alert(123)" src="fsd"/>
+```
+
+![这是图片](./XssAttackExample.png "简单的例子")
+
+这时，只要点击了a标签，就会执行相应的脚本，弹出“你被攻击了！”。然而，实际中的脚本多数时候会带来更加严重的后果。所以，不要点击网页上的广告，尤其是在已经登陆过的网站，许多个人信息的泄露都是这样来的。
+
 **防御措施:** 
   
 - **输入验证和输出编码:** 对用户输入的数据进行严格的验证和过滤，并在输出时进行编码，防止脚本执行。
