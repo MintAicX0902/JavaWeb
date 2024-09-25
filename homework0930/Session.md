@@ -109,7 +109,7 @@
 <img onerror="alert(123)" src="fsd"/>
 ```
 
-![](https://github.com/MintAicX0902/JavaWeb/blob/main/images/XssAttackExample.png)
+![](https://github.com/MintAicX0902/JavaWeb/blob/main/homework0930/images/XssAttackExample.png)
 
 这时，只要点击了a标签，就会执行相应的脚本，弹出“你被攻击了！”。然而，实际中的脚本多数时候会带来更加严重的后果。所以，不要点击网页上的广告，尤其是在已经登陆过的网站，许多个人信息的泄露都是这样来的。
 
